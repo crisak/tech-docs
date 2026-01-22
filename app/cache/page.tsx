@@ -1,6 +1,17 @@
 import { headers } from "next/headers";
 
+/**
+ * La API "headers()" convierte automaticamente a SSR "force-dynamic"
+ */
+export const dynamic = "force-dynamic";
+
+/**
+ * Los server componenets automaticamente se crean como SSG
+ */
 export default async function ServerCachePage() {
+  /**
+   * Al usar la API headers(), transforma de SSG -> SSR
+   */
   const headersList = await headers();
   const host = headersList.get("host") || "localhost:3000";
   const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
