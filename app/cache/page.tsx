@@ -1,7 +1,7 @@
+export const dynamic = "force-dynamic";
+
 export default async function ServerCachePage() {
-  const data = (await fetch("http://localhost:3000/api/cache").then((d) =>
-    d.json(),
-  )) as {
+  const data = (await fetch("/api/cache").then((d) => d.json())) as {
     front: string;
     back: string;
   }[];
