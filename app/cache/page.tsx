@@ -1,14 +1,12 @@
-import { delay } from "@/utils/delay";
-import { cacheApi } from "@/utils/cache-api";
-
-const getData = async () => {
-  await delay(10000);
-  return cacheApi;
-};
-
 export default async function ServerCachePage() {
-  console.log("[ServerCachePage] run");
-  const data = await getData();
+  const data = (await fetch("http://localhost:3000/api/cache").then((d) =>
+    d.json(),
+  )) as {
+    front: string;
+    back: string;
+  }[];
+
+  console.log("[ServerCachePage] Request");
 
   return (
     <div>
