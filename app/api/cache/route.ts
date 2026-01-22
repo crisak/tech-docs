@@ -2,7 +2,7 @@ import { cacheApi } from "@/utils/cache-api";
 import { delay } from "@/utils/delay";
 
 export async function GET() {
-  await delay(5000);
+  await delay(10);
 
   const length = cacheApi.length;
 
