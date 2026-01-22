@@ -1,7 +1,16 @@
+import { headers } from "next/headers";
+
 export const dynamic = "force-dynamic";
 
 export default async function ServerCachePage() {
-  const data = (await fetch("/api/cache").then((d) => d.json())) as {
+  const headersList = await headers();
+  const host = headersList.get("host") || "localhost:3000";
+  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+  const baseUrl = `${protocol}://${host}`;
+
+  console.log("[ServerCachePage] Request URL", `${baseUrl}/api/cache`);
+
+  const data = (await fetch(`${baseUrl}/api/cache`).then((d) => d.json())) as {
     front: string;
     back: string;
   }[];
