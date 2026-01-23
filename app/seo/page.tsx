@@ -16,6 +16,7 @@ export default async function SSGServerComponentDefaultSeoPage() {
   const list = await fetchData();
 
   console.log("[SSGServerComponentDefaultSeo] Init");
+
   return (
     <div>
       <HeaderPage
