@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 /**
  * Los server componenets automaticamente se crean como SSG
  */
-export default async function ServerCachePage() {
+export default async function SSRServerComponentCachePage() {
   /**
    * Al usar la API headers(), transforma de SSG -> SSR
    */
@@ -28,7 +28,19 @@ export default async function ServerCachePage() {
 
   return (
     <div>
-      <h1>Server Cache</h1>
+      <h1>Server Cache - SSR</h1>
+      <p>
+        Al usar la API de Next.js <code>headers()</code> convierte el Server
+        Component <code>SSG</code> a <code>SSR</code>
+      </p>
+      <hr />
+      <section>
+        <ul>
+          <li>Server Component</li>
+          <li>SSR - On Demand</li>
+          <li>10 Senconds from server</li>
+        </ul>
+      </section>
       <hr />
 
       {data.map(({ front, back }) => (

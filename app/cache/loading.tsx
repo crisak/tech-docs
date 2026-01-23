@@ -3,21 +3,28 @@ export default function LoadingPage() {
 
   return (
     <div>
-      <h1>Server Cache</h1>
-      <strong>Flujo SSR Detallado (lo que realmente pasa)</strong>
-      <code></code>
+      <h1>Server Cache - SSR</h1>
+      <p>
+        Al usar la API de Next.js <code>headers()</code> convierte el Server
+        Component <code>SSG</code> a <code>SSR</code>
+      </p>
+      <hr />
+      <section>
+        <ul>
+          <li>Server Component</li>
+          <li>SSR - On Demand</li>
+          <li>10 Senconds from server</li>
+        </ul>
+      </section>
       <hr />
 
       {data.map((_, i) => (
         <details key={i}>
-          <summary className="bg-neutral-800 animate-pulse">
-            <span style={{ opacity: 0 }}>0</span>
+          <summary>
+            <progress className="animate-pulse" />
           </summary>
-          <article className="animate-pulse">
-            <p>
-              <span style={{ opacity: 0 }}>0</span>
-            </p>
-          </article>
+          <article></article>
+          <hr />
         </details>
       ))}
     </div>
