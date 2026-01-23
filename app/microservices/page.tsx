@@ -15,7 +15,7 @@ const fetchData = async () => {
  * 3. Opcional: Añadir revalidación (ISR) para actualizar el contenido cacheado
  * Esto hace que incluso las páginas estáticas se actualicen cada X segundos
  */
-export const revalidate = 600; // Re-generar en caché cada hora si hay visitas
+export const revalidate = 432000; // 2days: Re-generar en caché cada hora si hay visitas
 
 export default async function ISRServerComponentMicroservicesPage() {
   const list = await fetchData();
@@ -31,7 +31,7 @@ export default async function ISRServerComponentMicroservicesPage() {
   return (
     <div>
       <HeaderPage
-        title={`Microservices - ISR  [${hour}:${minute}]`}
+        title={`Microservices - ISR - Totals records(${list.length}) [${hour}:${minute}]`}
         body={
           <>
             Implementar ISR con una actualizacion de cada{" "}
