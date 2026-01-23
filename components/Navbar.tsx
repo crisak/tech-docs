@@ -11,7 +11,7 @@ export function Navbar() {
           <Link href="/cache">Cache - SSR</Link>
         </li>
         <li>
-          <Link href="/seo">SEO - SSG</Link>
+          <Link href="/seo">SEO - SSG(Default)</Link>
         </li>
         <li>
           <Link href="/microservices">Microservices - SSG</Link>

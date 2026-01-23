@@ -1,9 +1,11 @@
+import { HeaderPage } from "@/components/HeaderPage";
 import { headers } from "next/headers";
 
 /**
  * La API "headers()" convierte automaticamente a SSR "force-dynamic"
+ * This line is unnecessary
+ * `export const dynamic = "force-dynamic";`
  */
-export const dynamic = "force-dynamic";
 
 /**
  * Los server componenets automaticamente se crean como SSG
@@ -17,31 +19,21 @@ export default async function SSRServerComponentCachePage() {
   const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
   const baseUrl = `${protocol}://${host}`;
 
-  console.log("[ServerCachePage] Request URL", `${baseUrl}/api/cache`);
+  console.log(
+    "[SSRServerComponentCachePage] Request URL",
+    `${baseUrl}/api/cache`,
+  );
 
   const data = (await fetch(`${baseUrl}/api/cache`).then((d) => d.json())) as {
     front: string;
     back: string;
   }[];
 
-  console.log("[ServerCachePage] Request");
+  console.log("[SSRServerComponentCachePage] Request");
 
   return (
     <div>
-      <h1>Server Cache - SSR</h1>
-      <p>
-        Al usar la API de Next.js <code>headers()</code> convierte el Server
-        Component <code>SSG</code> a <code>SSR</code>
-      </p>
-      <hr />
-      <section>
-        <ul>
-          <li>Server Component</li>
-          <li>SSR - On Demand</li>
-          <li>10 Senconds from server</li>
-        </ul>
-      </section>
-      <hr />
+      <HeaderPage />
 
       {data.map(({ front, back }) => (
         <details name={front} key={front}>
