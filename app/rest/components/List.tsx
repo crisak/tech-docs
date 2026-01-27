@@ -14,7 +14,7 @@ export function List({ list }: ListProps) {
   const [selectedCard, setSelectedCard] = useState<AnkiCard | null>();
   const { filters } = useRestContext();
 
-    const cards = useMemo(() => {
+  const cards = useMemo(() => {
     const inputFront = cls(filters.front);
     const inputBack = cls(filters.back);
     const inputTags = [...new Set(filters.tags.map((a) => a.toLowerCase()))];
